@@ -13,7 +13,7 @@ MAX_MESSAGES_COUNT = 100
 async def main():
     global chat_msgs
     
-    put_markdown("Chat")
+    put_markdown("## 🧊 Добро пожаловать в онлайн чат!\nИсходный код данного чата укладывается в 100 строк кода!")
 
     msg_box = output()
     put_scrollable(msg_box, height=300, keep_bottom=True)
@@ -27,7 +27,7 @@ async def main():
     refresh_task = run_async(refresh_msg(nickname, msg_box))
 
     while True:
-        data = await input_group("Send", [
+        data = await input_group("💭 Новое сообщение", [
             input(placeholder="Текст сообщения ...", name="msg"),
             actions(name="cmd", buttons=["Отправить", {'label': "Выйти из чата", 'type': 'cancel'}])
         ], validate = lambda m: ('msg', "Введите текст сообщения!") if m["cmd"] == "Отправить" and not m['msg'] else None)
