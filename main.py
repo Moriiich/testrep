@@ -1,5 +1,6 @@
 import asyncio
 
+import socket
 from pywebio import start_server
 from pywebio.input import *
 from pywebio.output import *
@@ -65,4 +66,8 @@ async def refresh_msg(nickname, msg_box):
         last_idx = len(chat_msgs)
 
 if __name__ == "__main__":
-    start_server(main, debug=True, port=$PORT, cdn=False)
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.bind(('localhost', 0))
+    port1 = sock.getsockname()[1]
+    sock.close()
+    start_server(main, debug=True, port=port1, cdn=False)
