@@ -1,2 +1,2 @@
-pywebio
-asyncio
+pywebio==1.6
+asyncio==3.11.0
